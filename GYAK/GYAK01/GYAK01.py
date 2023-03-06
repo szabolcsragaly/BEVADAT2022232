@@ -25,7 +25,9 @@ def is_odd(numbers:list) -> list:
     for number in numbers:
         if number % 2 == 1:
             result_list.append(True)
-        return result_list
+        else:
+            result_list.append(False)
+    return result_list
 
 #Készíts egy függvényt ami paraméterként 2 db listát vár, és kiszámolja a listák elemenként vett összegét.
 #A függvény egy listával térjen vissza amiben a megfelelő indexen lévő lista_1 és lista_2 elemek összege van.
