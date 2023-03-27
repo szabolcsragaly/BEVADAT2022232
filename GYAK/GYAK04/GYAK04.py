@@ -24,7 +24,7 @@ stats = {"country": ["Brazil", "Russia", "India", "China", "South Africa"],
        "area": [8.516, 17.10, 3.286, 9.597, 1.221],
        "population": [200.4, 143.5, 1252, 1357, 52.98] }
 
-def dict_to_dataframe(input_dict:dict) ->pd.core.frame.DataFrame:
+def dict_to_dataframe(input_dict : dict = stats) ->pd.core.frame.DataFrame:
     df = pd.DataFrame(input_dict)
     return df
 
@@ -125,13 +125,13 @@ függvény neve: plot_area
 '''
 
 # %%
-def plot_area(df:pd.core.frame.DataFrame)->plt.Figure:
-    new_df=df.copy()
-    x=new_df['area']
-    y=new_df['country']
-
-    fig, ax= plt.subplots()
-    ax.pie(x,labels=y)
+def plot_area(test_df : pd.DataFrame = dict_to_dataframe()) -> plt.Figure:
+    df = test_df.copy()
+    sizes = df['area']
+    labels = df['country']
+    fig, ax1 = plt.subplots()
+    ax1.pie(sizes, labels=labels, startangle=90)
+    ax1.axis('equal')
     return fig
 
 
