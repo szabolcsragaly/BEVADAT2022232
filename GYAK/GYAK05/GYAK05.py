@@ -49,3 +49,16 @@ class KNNClassifier:
     def confusion_matrix(self):
         conf_matrix = confusion_matrix(self.y_test,self.y_preds)
         return conf_matrix
+    
+    @property
+    def k_neighbors(self):
+        return self.k
+    
+    @staticmethod
+    def load_csv(csv_path:str) ->Tuple[np.ndarray,np.ndarray]:
+        np.random.seed(42)
+        dataset = np.genfromtxt(csv_path,delimiter=',')
+        np.random.shuffle(dataset,)
+        x,y = dataset[:,:4],dataset[:,-1]
+        return x,y
+
