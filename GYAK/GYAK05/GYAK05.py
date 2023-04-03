@@ -8,7 +8,7 @@ from sklearn.metrics import confusion_matrix
 class KNNClassifier:
 
 
-    def __init__(self,k:int,test_split_ratio:int):
+    def __init__(self,k:int,test_split_ratio:float):
         self.k = k
         self.test_split_ratio = test_split_ratio
         self.x_train = 0
@@ -17,7 +17,7 @@ class KNNClassifier:
         self.y_test = 0
 
 
-    def train_set_split(features:np.ndarray,
+    def train_test_split(features:np.ndarray,
                      labels:np.ndarray, self) -> None:
         test_size = int(len(features) * self.test_split_ratio)
         train_size = len(features) - test_size
