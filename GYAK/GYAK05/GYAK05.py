@@ -17,23 +17,19 @@ class KNNClassifier:
         self.y_test = 0
 
 
-    def train_test_split(features:np.ndarray,
-                     labels:np.ndarray, self) -> None:
+    def train_test_split(self, features:np.ndarray,
+                     labels:np.ndarray) -> None:
         test_size = int(len(features) * self.test_split_ratio)
         train_size = len(features) - test_size
         assert len(features) == test_size + train_size, "Size mismatch!"
-        x_train,y_train = features[:train_size,:],labels[:train_size]
-        x_test,y_test = features[train_size:train_size+test_size,:], labels[train_size:train_size + test_size]
-        self.x_train = x_train
-        self.y_train=y_train
-        self.x_test=x_test
-        self.y_test=y_test
+        self.x_train,self.y_train = features[:train_size,:],labels[:train_size]
+        self.x_test,self.y_test = features[train_size:train_size+test_size,:], labels[train_size:train_size + test_size]
     
 
-    def euclidean(element_of_x:np.ndarray,self) -> np.ndarray:
+    def euclidean(self, element_of_x:np.ndarray) -> np.ndarray:
         return np.sqrt(np.sum((self.x_train - element_of_x)**2,axis=1))
     
-    def predict(x_test:np.ndarray,self) -> np.ndarray:
+    def predict(self, x_test:np.ndarray) -> np.ndarray:
         labels_pred = []
         for x_test_element in x_test:
             distances = self.euclidean(self.x_train,x_test_element)
