@@ -1,6 +1,8 @@
 # %%
 import tensorflow as tf
 import numpy as np
+from tensorflow.keras.models import Sequential
+from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
 
 '''
 Készíts egy metódust ami a cifar100 adatbázisból betölti a train és test adatokat. (tf.keras.datasets.cifar100.load_data())
@@ -28,10 +30,6 @@ Egy példa a kimenetre: model,
 return type: keras.engine.sequential.Sequential
 függvény neve: cifar100_model
 '''
-import tensorflow as tf
-from tensorflow.keras.models import Sequential
-from tensorflow.keras.layers import Conv2D, MaxPooling2D, Flatten, Dense
-
 
 def cifar100_model():
     model = Sequential()
